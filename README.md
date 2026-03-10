@@ -1,6 +1,6 @@
 # Task Management Frontend
 
-Angular 21 frontend for the Dan & Bradstreet Task Management API.
+Angular 21 frontend for the Dun & Bradstreet Task Management API.
 
 ## Prerequisites
 

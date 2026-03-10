@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(export:*)",
+      "Read(//d/JavaScript/**)",
+      "Bash(npx @angular/cli@21 new dun-and-bradstreet-tasks-front --style=scss --ssr=false --skip-git=true --skip-tests=true)",
+      "Bash(mkdir:*)"
+    ]
+  }
+}

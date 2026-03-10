@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "dan-and-bradstreet-tasks-front": {
+    "dun-and-bradstreet-tasks-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -83,10 +83,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dan-and-bradstreet-tasks-front:build:production"
+              "buildTarget": "dun-and-bradstreet-tasks-front:build:production"
             },
             "development": {
-              "buildTarget": "dan-and-bradstreet-tasks-front:build:development"
+              "buildTarget": "dun-and-bradstreet-tasks-front:build:development"
             }
           },
           "defaultConfiguration": "development"
