@@ -1,0 +1,43 @@
+<p-dialog header="Change Status" [(visible)]="visible" [modal]="true" [style]="{ width: '450px' }" (onHide)="reset()">
+  @if (task(); as t) {
+    <p style="margin-top: 0;">
+      <strong>{{ currentStatusLabel() }}</strong> → <strong>{{ targetStatusLabel() }}</strong>
+    </p>
+
+    @for (field of requiredFields(); track field.key) {
+      <div class="form-field">
+        <label>{{ field.label }}</label>
+        @if (field.multiline) {
+          <textarea
+            pTextarea
+            [value]="statusData()[field.key] || ''"
+            (input)="updateField(field.key, $any($event.target).value)"
+            rows="4"
+            style="width: 100%"></textarea>
+        } @else {
+          <input
+            pInputText
+            [value]="statusData()[field.key] || ''"
+            (input)="updateField(field.key, $any($event.target).value)"
+            style="width: 100%" />
+        }
+      </div>
+    }
+
+    <div class="form-field">
+      <label>Assign to</label>
+      <p-select
+        [options]="users()"
+        appendTo="body"
+        optionLabel="name"
+        [ngModel]="selectedUser()"
+        (ngModelChange)="selectedUser.set($event)"
+        placeholder="Select user"
+        [style]="{ width: '100%' }" />
+    </div>
+  }
+
+  <ng-template #footer>
+    <p-button label="Submit" [disabled]="!canSubmit()" (onClick)="submit()" />
+  </ng-template>
+</p-dialog>

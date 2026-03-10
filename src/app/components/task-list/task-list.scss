@@ -1,0 +1,22 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.toolbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.task-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  app-task-card {
+    width: 380px;
+  }
+}

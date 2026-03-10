@@ -1,0 +1,29 @@
+<p-dialog header="Create Task" [(visible)]="visible" [modal]="true" [style]="{ width: '400px' }" (onHide)="reset()">
+  <div class="form-field">
+    <label>Type</label>
+    <p-select
+      [options]="taskTypes"
+      optionLabel="label"
+      optionValue="value"
+      [ngModel]="selectedType()"
+      (ngModelChange)="selectedType.set($event)"
+      placeholder="Select type"
+      [style]="{ width: '100%' }" />
+  </div>
+
+  <div class="form-field">
+    <label>Assign to</label>
+    <p-select
+      [options]="users()"
+      appendTo="body"
+      optionLabel="name"
+      [ngModel]="selectedUser()"
+      (ngModelChange)="selectedUser.set($event)"
+      placeholder="Select user"
+      [style]="{ width: '100%' }" />
+  </div>
+
+  <ng-template #footer>
+    <p-button label="Create" [disabled]="!canSubmit()" (onClick)="submit()" />
+  </ng-template>
+</p-dialog>

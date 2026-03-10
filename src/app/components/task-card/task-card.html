@@ -1,0 +1,35 @@
+<p-card>
+  <div class="card-header">
+    <span class="card-title">Task #{{ task().id }}</span>
+    <div class="card-tags">
+      <p-tag [value]="task().type" [severity]="task().type === 'Procurement' ? 'info' : 'success'" />
+      <p-tag [value]="statusLabel()" severity="secondary" />
+      @if (task().isClosed) {
+        <p-tag value="Closed" severity="danger" />
+      }
+    </div>
+  </div>
+
+  <div class="card-body">
+    <p><strong>Assigned to:</strong> {{ task().assignedUserName }}</p>
+    <p><strong>Created:</strong> {{ task().createdAt | date:'dd/MM/yyyy' }}</p>
+
+    @for (entry of typeDataEntries(); track entry.label) {
+      <p><strong>{{ entry.label }}:</strong> {{ entry.value }}</p>
+    }
+  </div>
+
+  <ng-template #footer>
+    <div class="card-actions">
+      @if (canReverse()) {
+        <p-button label="Reverse Status" severity="secondary" [outlined]="true" (onClick)="reverseStatus.emit(task())" />
+      }
+      @if (canAdvance()) {
+        <p-button label="Advance Status" severity="info" [outlined]="true" (onClick)="advanceStatus.emit(task())" />
+      }
+      @if (canClose()) {
+        <p-button label="Close Task" severity="warn" [outlined]="true" (onClick)="closeTask.emit(task())" />
+      }
+    </div>
+  </ng-template>
+</p-card>

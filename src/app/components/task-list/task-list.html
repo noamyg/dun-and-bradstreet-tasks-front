@@ -1,0 +1,42 @@
+<div class="page">
+  <h1>Task Management</h1>
+
+  <div class="toolbar">
+    <p-select
+      [options]="users()"
+      optionLabel="name"
+      [ngModel]="selectedUser()"
+      (ngModelChange)="onUserChange($event)"
+      placeholder="Select user"
+      [style]="{ width: '250px' }" />
+    <p-button label="New Task" icon="pi pi-plus" (onClick)="showCreateDialog.set(true)" [disabled]="!users().length" />
+  </div>
+
+  <div class="task-grid">
+    @for (task of tasks(); track task.id) {
+      <app-task-card
+        [task]="task"
+        (advanceStatus)="onAdvanceStatus($event)"
+        (reverseStatus)="onReverseStatus($event)"
+        (closeTask)="onCloseTask($event)" />
+    } @empty {
+      @if (selectedUser()) {
+        <p>No tasks found for this user.</p>
+      } @else {
+        <p>Select a user to view their tasks.</p>
+      }
+    }
+  </div>
+</div>
+
+<app-task-create-dialog
+  [(visible)]="showCreateDialog"
+  [users]="users()"
+  (taskCreated)="onTaskCreated()" />
+
+<app-status-change-dialog
+  [(visible)]="showStatusDialog"
+  [task]="selectedTaskForStatus()"
+  [targetStatus]="targetStatus()"
+  [users]="users()"
+  (statusChanged)="onStatusChanged()" />

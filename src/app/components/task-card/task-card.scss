@@ -1,0 +1,25 @@
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.card-tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-body p {
+  margin: 0.25rem 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
